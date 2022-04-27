@@ -20,7 +20,7 @@ const chart_resultsRoute = require('./routes/chart_results-route')
 const configRoute = require('./routes/config-route')
 const OrderRoute = require('./routes/order-route')
 const mongoose = require("mongoose")
-var cors = require('cors');
+var cors = require('cors')
 mongoose.connect("mongodb+srv://Admin:Admin@cluster0.udlcp.mongodb.net/gvintedb?retryWrites=true&w=majority")
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))

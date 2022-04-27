@@ -21,9 +21,7 @@ const configRoute = require('./routes/config-route')
 const OrderRoute = require('./routes/order-route')
 const mongoose = require("mongoose")
 var cors = require('cors');
-const mongoDbURI = process.env.MONGODB_URI
-const mongooseURIConnect = "mongodb+srv://Admin:Admin@cluster0.udlcp.mongodb.net/gvintedb?retryWrites=true&w=majority";
-mongoose.connect(mongoDbURI || mongooseURIConnect)
+mongoose.connect("mongodb+srv://Admin:Admin@cluster0.udlcp.mongodb.net/gvintedb?retryWrites=true&w=majority")
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

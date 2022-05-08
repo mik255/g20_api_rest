@@ -17,8 +17,12 @@ exports.post = async (body) => {
     await order.save()
 }
 
-exports.put = async(id,body) =>{
-let order = await Order.findById(id);
-order.set(body);
-await order.save();
+exports.put = async (id, body) => {
+    let order = await Order.findById(id);
+    order.set(body);
+    await order.save();
+}
+
+exports.finishedSection = async () => {
+    return await Order.deleteMany({});
 }

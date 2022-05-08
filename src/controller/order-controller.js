@@ -46,7 +46,7 @@ exports.put = ('/:id', (req, res, next) => {
     const id = req.params.id 
     repository.put(id,req.body).then(e => {
         res.status(201).send({
-            message: 'pedido atualizado com sucesso com sucesso'
+            message: 'pedido atualizado com sucesso'
         })
     }).catch(error => {
         res.status(400).send({
@@ -55,8 +55,7 @@ exports.put = ('/:id', (req, res, next) => {
     })
 })
 
-exports.delete = ('/:id', (req, res, next) => {
-    const id = req.params.id
-    repository.delete(id)
+exports.finishedSection = async (req, res, next) => {
+    await repository.finishedSection()
     res.status(200).send(req.body)
-})
+}

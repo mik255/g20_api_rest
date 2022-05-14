@@ -65,8 +65,15 @@ exports.setProduct = ('/', (req, res, next) => {
         })
     })
 })
-// exports.delete = ('/', (req, res, next) => {
-//     const id = req.params.id
-//     repository.delete(id)
-//     res.status(200).send(req.body)
-// })
+exports.delete = ('/:id', (req, res, next) => {
+    const id = req.params.id 
+    repository.delete(id,req.body).then(e => {
+        res.status(200).send({
+            message: 'loja deletada com sucesso'
+        })
+    }).catch(error => {
+        res.status(400).send({
+            message: 'erro ao deletar', data: error
+        })
+    })
+})

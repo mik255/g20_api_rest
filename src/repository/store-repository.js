@@ -29,3 +29,6 @@ exports.setProduct = async (body) => {
     store.products.unshift(product_res.id)
     await store.save()
 }
+exports.delete = async (id) => {
+    await Store.findOneAndDelete(id);
+}

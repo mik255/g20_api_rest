@@ -7,7 +7,7 @@ const Store = require('../models/store')
 exports.get = async () => {
 
     var res = await Category.find({}).populate
-    ({ path: 'stores', populate: { path: 'products' } });
+        ({ path: 'stores', populate: { path: 'products' } });
     return res
 }
 exports.getById = async (id) => {
@@ -25,8 +25,12 @@ exports.setStore = async (body) => {
     category.stores.unshift(store_res.id)
     await category.save()
 }
-exports.put = async(id,body) =>{
-let category = await Category.findById(id);
-category.set(body);
-await category.save();
+exports.put = async (id, body) => {
+    let category = await Category.findById(id);
+    category.set(body);
+    await category.save();
+}
+
+exports.delete = async (id) => {
+    await Category.findOneAndDelete(id);
 }

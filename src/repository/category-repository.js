@@ -32,5 +32,5 @@ exports.put = async (id, body) => {
 }
 
 exports.delete = async (id) => {
-    await Category.findOneAndDelete(id);
+    await Category.findByIdAndDelete(id);
 }

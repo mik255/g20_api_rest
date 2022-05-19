@@ -14,10 +14,10 @@ exports.getAll = async (req, res, next) => {
         })
     }
 }
-exports.getByStoreId = async (req, res, next) => {
+exports.getStoreReceiptsById = async (req, res, next) => {
     const id = req.params.id
     try {
-        var data = await repository.getById(id)
+        var data = await repository.getStoreReceiptsById(id)
         res.status(200).send(data)
     }catch(error){
         res.status(400).send({

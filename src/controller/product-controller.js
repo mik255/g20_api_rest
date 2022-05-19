@@ -60,8 +60,3 @@ exports.delete = async (req, res, next) => {
      }
 }
 
-// exports.delete = ('/', (req, res, next) => {
-//     const id = req.params.id
-//     repository.delete(id)
-//     res.status(200).send(req.body)
-// })

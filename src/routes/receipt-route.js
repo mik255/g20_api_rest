@@ -3,7 +3,7 @@ const express = require("express")
 const router = express.Router()
 const controller = require("../controller/receipt-controller")
 
-// router.get('/:id',controller.getById) 
+router.get('/storeReceipts/:id',controller.getStoreReceiptsById) 
 router.get('/',controller.getAll) 
 router.post('/',controller.post)
 router.put('/:id',controller.put)

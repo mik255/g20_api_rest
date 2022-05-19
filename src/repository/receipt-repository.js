@@ -12,7 +12,10 @@ exports.getUserReceipts = async (userId) => {
     var res = await User.findById(userId).populate('receipts')
     return res.receipts
 }
-
+exports.getStoreReceiptsById = async (storeId) => {
+    var res = await Receipt.find({"stories": { "$elemMatch": { "_id": storeId }}})
+    return res
+}
 exports.post = async (body) => {
     var total_price =0;
     var total_price_square =0;

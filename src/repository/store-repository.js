@@ -30,5 +30,5 @@ exports.setProduct = async (body) => {
     await store.save()
 }
 exports.delete = async (id) => {
-    await Store.findOneAndDelete(id);
+    await Store.findByIdAndDelete(id);
 }

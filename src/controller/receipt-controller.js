@@ -18,7 +18,14 @@ exports.getStoreReceiptsById = async (req, res, next) => {
     const id = req.params.id
     try {
         var data = await repository.getStoreReceiptsById(id)
-        res.status(200).send(data)
+        var totalValueFromAllReceipts = 0;
+        data.forEach(e=>{
+            totalValueFromAllReceipts+= e.total_price
+        })
+        totalValueFromAllReceipts = parseFloat(parseFloat(totalValueFromAllReceipts).toFixed(2));
+        res.status(200).send({
+            totalValueFromAllReceipts:totalValueFromAllReceipts
+        })
     }catch(error){
         res.status(400).send({
             message: "erro ao carregar rebibos",

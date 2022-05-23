@@ -24,9 +24,9 @@ exports.post = async (body) => {
 }
 exports.postReceipt = async (body) => {
     var user = await this.getById(body.receipt.userId)
-    var receipt = new Receipt(body.receipt)
-    receipt.populate('stories')
+    var receipt = new Receipt(body.receipt).populate('stories')
     var receipt_res = await receipt.save()
+    receipt_res.populate('stories')
     user.receipts.unshift(receipt_res.id)
     await user.save()
 }

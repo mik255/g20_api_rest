@@ -5,7 +5,7 @@ const Receipt = mongoose.model('Receipt')
 const User = mongoose.model('User')
 
 exports.getAll = async () => {
-    var res = await Receipt.find({}).populate('store')
+    var res = await Receipt.find({}).populate('stories')
     return res
 }
 exports.getUserReceipts = async (userId) => {

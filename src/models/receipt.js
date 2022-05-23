@@ -14,9 +14,9 @@ const schema = new Schema({
     },
     stories:[
         {
-            store: {
-                type : mongoose.Schema.Types.ObjectId,
-                ref:'Store'
+            name: {
+                type: String,
+                required:true
             },
             products:[Product.schema]
         }

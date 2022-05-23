@@ -14,7 +14,7 @@ const schema = new Schema({
     },
     stories:[
         {
-            store_Id: {
+            store: {
                 type : mongoose.Schema.Types.ObjectId,
                 ref:'Store'
             },

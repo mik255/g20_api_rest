@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-
+const Product = require("./product")
 const schema = new Schema({
     pix: {
         type: String,
@@ -11,10 +11,7 @@ const schema = new Schema({
         required: true,
     },
     products:[
-        {
-            type : mongoose.Schema.Types.ObjectId,
-            ref:'Product',
-        }
+        Product.schema
     ],
 })
 

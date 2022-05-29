@@ -21,6 +21,10 @@ const schema = new Schema({
             products:[Product.schema]
         }
     ],
+    date: {
+        type: String,
+        required: false,
+    },
     total_price: {
         type: Number,
         required: false,

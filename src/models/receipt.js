@@ -29,7 +29,7 @@ const schema = new Schema({
     },
     payment_type: {
         type: String,
-        enum: ['card','pix','money,logist'],
+        enum: ['card','pix','money','logist'],
         required:true
     },
     

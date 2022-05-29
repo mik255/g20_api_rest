@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-const Product = require("./product")
+const Store = require("./store")
 const schema = new Schema({   
     user_Id: {
         type : mongoose.Schema.Types.ObjectId,
@@ -12,15 +12,7 @@ const schema = new Schema({
         ref:'Category',
         require:true
     },
-    stories:[
-        {
-            name: {
-                type: String,
-                required:true
-            },
-            products:[Product.schema]
-        }
-    ],
+    stories:[Store.schema],
     date: {
         type: String,
         required: false,

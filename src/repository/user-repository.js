@@ -41,6 +41,7 @@ exports.put = async (body, id) => {
 }
 exports.getById = async (id) => {
     let user = await User.findById(id).populate('receipts');
+    user.populate('stories')
     return user;
 }
 

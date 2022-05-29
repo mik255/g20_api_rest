@@ -9,7 +9,7 @@ exports.getAll = async () => {
     return res
 }
 exports.getUserReceipts = async (userId) => {
-    var res = await User.findById(userId).populate('receipts').populate('stories')
+    var res = await User.findById(userId).populate('receipts')
     return res.receipts
 }
 exports.getStoreReceiptsById = async (storeId) => {

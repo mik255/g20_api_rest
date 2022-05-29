@@ -40,8 +40,7 @@ exports.put = async (body, id) => {
     await user.save();
 }
 exports.getById = async (id) => {
-    let user = await User.findById(id).populate('receipts');
-   // user.populate('stories')
+    let user = await User.findById(id).populate('receipts').populate('stories')
     return user;
 }
 

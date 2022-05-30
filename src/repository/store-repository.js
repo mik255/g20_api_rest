@@ -17,7 +17,6 @@ exports.post = async (body) => {
     await store.save()
 }
 exports.put = async(id,body) =>{
-    // Update the product
 let store = await Store.findById(id);
 store.set(body);
 await store.save();

@@ -40,7 +40,19 @@ exports.put = async (body, id) => {
     await user.save();
 }
 exports.getById = async (id) => {
-    let user = await User.findById(id).populate('receipts')
+    let user = await User.findById(id).populate({
+        path: 'receipts',
+        model: 'Receipt', 
+        populate: {
+            path: 'stories',
+            model: 'Store',
+            populate: {
+                path: 'products',
+                model: 'Product',
+                
+            }
+        }
+    })
     return user;
 }
 

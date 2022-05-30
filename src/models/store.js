@@ -4,17 +4,17 @@ const Product = require("./product")
 const schema = new Schema({
     pix: {
         type: String,
-        required: true,
+        required: false,
     },
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     products:[
         {
             type : mongoose.Schema.Types.ObjectId,
-            ref:'Product',
-        },
+            ref:'Product'
+        }
     ],
 })
 

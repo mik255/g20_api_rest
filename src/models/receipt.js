@@ -12,7 +12,12 @@ const schema = new Schema({
         ref:'Category',
         require:true
     },
-    stories:[Store.schema],
+    stories:[
+        {
+            type : mongoose.Schema.Types.ObjectId,
+        ref:'Store', 
+        }
+    ],
     date: {
         type: String,
         required: false,

@@ -16,7 +16,19 @@ exports.login = async (body) => {
             "indentify.cpf": body.indentify.cpf,
             "password": body.password
             },
-        ).populate('receipts')
+        ).populate({
+            path: 'receipts',
+            model: 'Receipt', 
+            populate: {
+                path: 'stories',
+                model: 'Store',
+                populate: {
+                    path: 'products',
+                    model: 'Product',
+                    
+                }
+            }
+        })
 }
 exports.post = async (body) => {
     var user = new User(body);

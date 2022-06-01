@@ -22,7 +22,8 @@ const schema = new Schema({
     receipts:[
         {
             type : mongoose.Schema.Types.ObjectId,
-            ref:'Receipt'
+            ref:'Receipt',
+            required:false
         }
     ],    
 })

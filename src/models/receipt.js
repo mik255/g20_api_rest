@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-const Store = require("./store")
+const Product = require("./product")
 const schema = new Schema({   
     user_Id: {
         type : mongoose.Schema.Types.ObjectId,
@@ -12,12 +12,17 @@ const schema = new Schema({
         ref:'Category',
         require:true
     },
-    stories:[
+    ReceiptStories:[
         {
-            type : mongoose.Schema.Types.ObjectId,
-        ref:'Store', 
+            store_id: {
+                type : mongoose.Schema.Types.ObjectId,
+                ref:'Store',
+                require:true
+            },
+
+            products:[Product.schema]
         }
-    ],
+        ],
     date: {
         type: String,
         required: false,

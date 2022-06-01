@@ -16,19 +16,7 @@ exports.login = async (body) => {
             "indentify.cpf": body.indentify.cpf,
             "password": body.password
             },
-        ).populate({
-            path: 'receipts',
-            model: 'Receipt', 
-            populate: {
-                path: 'stories',
-                model: 'Store',
-                populate: {
-                    path: 'products',
-                    model: 'Product',
-                    
-                }
-            }
-        })
+        ).populate('receipts')
 }
 exports.post = async (body) => {
     var user = new User(body);
@@ -36,11 +24,12 @@ exports.post = async (body) => {
 }
 exports.postReceipt = async (body) => {
     var user = await this.getById(body.receipt.userId)
-    var receipt = new Receipt(body.receipt)
-    var receipt_res = await receipt.save()
-    receipt_res.populate('stories')
-    user.receipts.unshift(receipt_res.id)
-    await user.save()
+ 
+   var receipt = new Receipt(body.receipt)
+     var receipt_res = await receipt.save()
+        user.receipts.unshift(receipt_res._id)
+
+     await user.save()
 }
 exports.delete = async (id) => {
     await User.findByIdAndDelete(id)
@@ -52,19 +41,7 @@ exports.put = async (body, id) => {
     await user.save();
 }
 exports.getById = async (id) => {
-    let user = await User.findById(id).populate({
-        path: 'receipts',
-        model: 'Receipt', 
-        populate: {
-            path: 'stories',
-            model: 'Store',
-            populate: {
-                path: 'products',
-                model: 'Product',
-                
-            }
-        }
-    })
+    let user = await User.findOne({ _id: id }).populate('receipts').exec()
     return user;
 }
 

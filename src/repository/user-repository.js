@@ -1,6 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose')
+const { populate } = require('../models/product')
 const User = mongoose.model('User')
 const Receipt = mongoose.model('Receipt')
 
@@ -41,7 +42,23 @@ exports.put = async (body, id) => {
     await user.save();
 }
 exports.getById = async (id) => {
-    let user = await User.findOne({ _id: id }).populate('receipts').exec()
+    let user = await User.findOne({ _id: id }).populate({
+        path: 'receipts',
+        model:'Receipt',
+        populate: {
+            path: 'ReceiptStories',
+            populate: {
+                path: 'store_id' ,
+                model: 'Store',
+              //  select: 'name'
+              populate: {
+                path: 'products' ,
+                model: 'Product',
+              //  select: 'name'
+            } 
+            } 
+        }
+}).exec()
     return user;
 }
 

@@ -19,7 +19,11 @@ const schema = new Schema({
                 ref:'Store',
                 require:true
             },
-
+            payment_type: {
+                type: String,
+                enum: ['card','pix','money','logist'],
+                required:false
+            },
             products:[Product.schema]
         }
         ],

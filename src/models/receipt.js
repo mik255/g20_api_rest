@@ -10,7 +10,11 @@ const schema = new Schema({
     category_Id: {
         type : mongoose.Schema.Types.ObjectId,
         ref:'Category',
-        require:true
+        require:false
+    },
+    categoryName: {
+        type: String,
+        required: false,
     },
     ReceiptStories:[
         {
